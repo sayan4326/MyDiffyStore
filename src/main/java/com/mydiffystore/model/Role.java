@@ -1,10 +1,13 @@
 package com.mydiffystore.model;
 
-public class Role {
-	private Integer roleId;
-	
-	private String role;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
+@Entity
+public class Role {
+	@Id
+	private Integer roleId;
+	private String role;
 
 	public Integer getRoleId() {
 		return roleId;

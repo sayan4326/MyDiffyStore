@@ -2,39 +2,52 @@ package com.mydiffystore.model;
 
 import java.util.Set;
 
-public class User {
-	
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+
+@Entity
+public class DiffyUser {
+	@Id
 	private Integer userId;
 	private String username;
 	private String password;
+	@ManyToMany
+	@JoinTable(name = "user_role_map", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private Set<Role> roles;
-	
 
 	public Integer getUserId() {
 		return userId;
 	}
+
 	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
+
 	public String getUsername() {
 		return username;
 	}
+
 	public void setUsername(String username) {
 		this.username = username;
 	}
+
 	public String getPassword() {
 		return password;
 	}
+
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
 	public Set<Role> getRoles() {
 		return roles;
 	}
+
 	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
 	}
-	
-	
 
 }
